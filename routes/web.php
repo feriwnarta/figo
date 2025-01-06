@@ -7,6 +7,4 @@ Route::controller(\App\Http\Controllers\SensorController::class)->group(function
     Route::post('/sensor', 'create');
 });
 
-Route::get("/setup", function () {
-    Artisan::call("migrate:fresh");
-});
+Route::get('/', \App\Livewire\HomePage::class)->name('home');

@@ -30,22 +30,13 @@ class SensorController extends Controller
 
 
             // simpan
-            $sensor = Sensor::first();
+            $sensor = Sensor::create([
+                "suhu" => $suhu,
+                "kelembapan" => $kelembapan,
+                "gas" => $gas,
+                "debu" => $kepadatamDebu,
+            ]);
 
-            if (is_null($sensor)) {
-                $sensor = new Sensor();
-                $sensor->suhu = $suhu;
-                $sensor->kelembapan = $kelembapan;
-                $sensor->gas = $gas;
-                $sensor->debu = $kepadatamDebu;
-                $sensor->save();
-            } else {
-                $sensor->suhu = $suhu;
-                $sensor->kelembapan = $kelembapan;
-                $sensor->gas = $gas;
-                $sensor->debu = $kepadatamDebu;
-                $sensor->save();
-            }
 
             return response()->json([
                 "message" => "Berhasil terima data diserver"
